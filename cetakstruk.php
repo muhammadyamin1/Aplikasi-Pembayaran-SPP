@@ -2,12 +2,12 @@
 session_start();
 require('koneksi.php');
 require_once("vendor/autoload.php");
-$base_url = 'http://localhost:8888/SPP/';
+require('config_struk.php');
 use Dompdf\Dompdf;
 $dompdf = new Dompdf();
 date_default_timezone_set('Asia/Jakarta');
 if (isset($_POST['cetakstruk'])) {
-    $cetakstruk = $_POST['tanggalcetak'];
+    $cetakstruk = $_POST['tanggalcetak']; $tanggal_cetak = date("d-m-Y", strtotime($cetakstruk));
     $nisn = $_POST['nisn'];
     $nama = $_POST['nama'];
     $datastruk = mysqli_query($koneksi, "SELECT pembayaran.id_pembayaran,petugas.nama_petugas,pembayaran.nisn,siswa.nama,pembayaran.tgl_bayar,pembayaran.bulan_dibayar,pembayaran.tahun_dibayar,pembayaran.status,spp.nominal FROM pembayaran LEFT JOIN petugas ON pembayaran.id_petugas=petugas.id_petugas LEFT JOIN spp ON pembayaran.id_spp=spp.id_spp LEFT JOIN siswa ON pembayaran.nisn=siswa.nisn WHERE tgl_bayar = '$cetakstruk' and pembayaran.nisn = '$nisn'");
@@ -19,12 +19,12 @@ if (isset($_POST['cetakstruk'])) {
 $html = '
 <table width="100%">
     <tr>
-        <td align="center"><img height="80px" src="'.$base_url.'Foto/struk/logo.jpeg"></td>
-        <td align="center"><h2>Dinas Pendidikan Kota Medan<br> Provinsi Sumatera Utara<br> SMKN 9 MEDAN</h2></td>
-        <td align="center"><img height="80px" src="'.$base_url.'Foto/struk/tutwuri.png"></td>
+        <td align="center"><img height="80px" src="'.$logo_kiri.'"></td>
+        <td align="center"><h2>'.$alamat_sekolah.'<br>'.$nama_sekolah.'</h2></td>
+        <td align="center"><img height="80px" src="'.$logo_kanan.'"></td>
     </tr>
 </table><hr/>
-<font face="helvetica" size="17px">Berikut merupakan laporan pembayaran SPP untuk siswa dengan nama '.$nama.' dan NISN '.$nisn.' tanggal '.$cetakstruk.' :</font><br><br>
+<font face="helvetica" size="17px">Berikut merupakan laporan pembayaran SPP untuk siswa dengan nama '.$nama.' dan NISN '.$nisn.' tanggal '.$tanggal_cetak.' :</font><br><br>
 <table border="1" width="100%" cellspacing="0" cellpadding="2">
     <tr>
         <th align="center">No</th>
@@ -61,7 +61,7 @@ $html .= '
 <table width = 100%>
     <tr>
         <td width="75%"></td>
-        <td>Medan, '.date("Y-m-d").'<br>Petugas SPP<br><br><br><br><br><b><u>'.$_SESSION['pengguna'].'</u></b></td>
+        <td>Medan, '.date("d-m-Y").'<br>Petugas SPP<br><br><br><br><br><b><u>'.$_SESSION['pengguna'].'</u></b></td>
     </tr>
 </table>
 </html>';

@@ -32,6 +32,23 @@ Aplikasi sederhana untuk mengelola pembayaran SPP di sekolah. Aplikasi ini mendu
   * Pembayaran **tidak bisa double**
 * Ganti password
 * Cetak laporan pembayaran dengan nama petugas
+* **Kustomisasi Struk Cetak** (logo, nama sekolah, alamat) mudah melalui file konfigurasi
+
+## 🖨️ Mengubah Struk Cetak Pembayaran
+
+Aplikasi mendukung **kustomisasi struk** tanpa perlu mengubah kode cetak secara langsung.  
+
+### Lokasi File Konfigurasi Struk
+File konfigurasi struk terletak di: config_struk.php
+
+Di dalam file ini terdapat variabel:
+
+```php
+$logo_kiri       // Logo di sisi kiri struk
+$logo_kanan      // Logo di sisi kanan struk
+$nama_sekolah    // Nama sekolah
+$alamat_sekolah  // Alamat / kop surat sekolah
+```
 
 ## 💻 Instalasi
 

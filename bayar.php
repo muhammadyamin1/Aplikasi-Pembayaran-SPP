@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Jakarta');
 if($_SESSION['status']!="login"){
 	echo "<script>window.location.href='index.php?pesan=belum_login';</script>";
 }
