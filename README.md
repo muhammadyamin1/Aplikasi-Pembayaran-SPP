@@ -9,8 +9,21 @@ Aplikasi sederhana untuk mengelola pembayaran SPP di sekolah. Aplikasi ini mendu
   * **Admin / Petugas / Siswa**
   * Contoh login awal:
 
-    * **Username:** `yamin123`
-    * **Password:** `admin123`
+    ### 🔑 Akun Demo
+
+    Gunakan akun berikut untuk mencoba aplikasi:
+    
+        **Admin**
+        - Username: `yamin123`  
+        - Password: `admin123`
+        
+        **Petugas**
+        - Username: `aini123`  
+        - Password: `22222222`
+        
+        **Siswa**
+        - Username: `zaki123`  
+        - Password: `33333333`
 * Kelola data siswa
 * Pencatatan pembayaran SPP per bulan:
 
